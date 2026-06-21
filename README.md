@@ -26,4 +26,6 @@ OpenAI API billing is not available for my current billing region, so I used a l
 Because tokenization and tool-calling behavior vary between models, some runtime values may differ slightly from the reference results.
 
 Run the homework:
+```bash
 uv run python homework_01.py
+```
