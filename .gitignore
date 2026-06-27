@@ -12,3 +12,6 @@ wheels/
 # Environment variables and secrets
 .env
 .env.*
+
+# Downloaded model files
+models/

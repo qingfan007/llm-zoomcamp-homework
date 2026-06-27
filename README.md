@@ -29,3 +29,22 @@ Run the homework:
 ```bash
 uv run python homework_01.py
 ```
+
+### Homework 2: Vector Search
+The second homework focuses on vector search for RAG retrieval.
+
+The implementation covers:
+- Creating embeddings for queries and lesson documents
+- Computing cosine similarity between embeddings
+- Splitting lesson documents into chunks
+- Performing vector search manually with NumPy
+- Using minsearch for vector search
+- Comparing text search and vector search results
+- Combining text search and vector search with hybrid search using RRF
+
+For Homework 2, I used the course-provided ONNX embedder based on Xenova/all-MiniLM-L6-v2.
+
+Run the homework:
+```bash
+uv run python homework_02.py
+```
