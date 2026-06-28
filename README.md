@@ -48,3 +48,35 @@ Run the homework:
 ```bash
 uv run python homework_02.py
 ```
+
+### Homework 4: Evaluation
+The fourth homework focuses on evaluating search and RAG systems.
+
+The implementation covers:
+- Generating and using ground truth questions
+- Running text search and vector search against the ground truth dataset
+- Evaluating retrieval quality with Hit Rate and MRR
+- Comparing text search, vector search, and hybrid search
+- Using Reciprocal Rank Fusion (RRF) for hybrid search
+- Testing different RRF k values and comparing their MRR scores
+
+For Q1, I used Gemini to verify the average input token count for generating questions from the first 3 lesson pages.
+
+Model and Provider for Q1:
+- Provider: Google Gemini
+- Model: gemini-2.0-flash
+- Purpose: Count input tokens for the question generation prompt
+
+The main evaluation code for Q2-Q6 is in homework_04.py.
+
+The Q1 token counting code is in homework_04_q1_count_tokens.py.
+
+Run the main homework:
+```bash
+uv run python homework_04.py
+```
+
+Run the Q1 token counting script:
+```bash
+uv run python homework_04_q1_count_tokens.py
+```
