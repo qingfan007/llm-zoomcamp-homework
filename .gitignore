@@ -19,3 +19,8 @@ flows/
 
 .DS_Store
 traces.db
+# dlt workshop runtime files
+dlt_workshop/.env
+dlt_workshop/*.duckdb
+dlt_workshop/.dlt/
+dlt_workshop/__pycache__/

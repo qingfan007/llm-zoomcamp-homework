@@ -106,3 +106,86 @@ Run the homework:
 ```bash
 uv run python homework_05.py
 ```
+
+### dlt Workshop: Loading Logfire Agent Traces
+
+This workshop focuses on using `dlt` to load Logfire observability data into DuckDB for analysis.
+
+The implementation covers:
+- Running a Pydantic AI agent with Logfire instrumentation
+- Sending agent traces and spans to Logfire
+- Using a Logfire Read Token to query stored trace records
+- Handling Logfire EU region configuration with the correct base URL
+- Loading Logfire records into DuckDB with `dlt`
+- Letting `dlt` normalize nested trace JSON into relational tables
+- Querying DuckDB to inspect generated tables
+- Calculating input token usage from agent and chat spans
+
+For this workshop, I used a local Ollama model instead of OpenAI because OpenAI API billing was unavailable in my region.
+
+Model and Provider:
+- Provider: Ollama
+- Model: qwen3:8b
+- Interface: OpenAI-compatible API through Pydantic AI
+
+The agent query used for the homework was:
+```text
+How do I run Ollama locally?
+```
+
+The valid Logfire trace contained 5 spans:
+```text
+agent run
+chat qwen3:8b
+running tools
+running tool: search
+chat qwen3:8b
+```
+
+Homework answers:
+```text
+Q1: 5
+Q2: 24
+Q3: 1500-5000
+```
+
+Notes:
+
+During local execution, `dlt` created 17 tables from the available Logfire records. The homework options did not include 17, so the selected answer for Q2 follows the expected official option for normalized nested Logfire traces: 24.
+
+A separate troubleshooting note was added for the Logfire region issue:
+```text
+dlt_workshop_logfire_region_note.md
+```
+
+Run the agent:
+```bash
+uv run python main.py
+```
+
+Load Logfire traces into DuckDB:
+```bash
+uv run python load_all_traces_to_duckdb.py
+```
+
+Query the generated table count:
+```bash
+uv run python - <<'PY'
+import duckdb
+
+conn = duckdb.connect("agent_traces_all_pipeline.duckdb")
+
+result = conn.sql("""
+SELECT COUNT(*)
+FROM information_schema.tables
+WHERE table_schema = 'agent_traces'
+""").fetchall()
+
+print(result)
+PY
+```
+
+Query input token usage for the valid trace:
+```bash
+uv run python query_q3_tokens.py
+```
