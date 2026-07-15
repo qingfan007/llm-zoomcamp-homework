@@ -18,3 +18,4 @@ models/
 flows/
 
 .DS_Store
+traces.db
