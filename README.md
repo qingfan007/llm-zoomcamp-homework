@@ -80,3 +80,29 @@ Run the Q1 token counting script:
 ```bash
 uv run python homework_04_q1_count_tokens.py
 ```
+
+### Homework 5: Monitoring
+The fifth homework focuses on monitoring a RAG system with OpenTelemetry.
+
+The implementation covers:
+- Adding OpenTelemetry tracing to a RAG pipeline
+- Creating spans for `rag`, `search`, and `llm`
+- Capturing LLM input tokens, output tokens, and total tokens
+- Measuring span duration for search and LLM calls
+- Exporting spans to the console
+- Storing span data in SQLite for later analysis
+- Querying span names, duration, and token usage from the SQLite database
+- Comparing input token stability across multiple runs of the same query
+
+For Homework 5, I used a local Ollama model instead of Gemini or OpenAI because Gemini API quota was unavailable during execution.
+
+Model and Provider:
+- Provider: Ollama
+- Model: llama3.1:8b
+- Interface: OpenAI-compatible Chat Completions API
+The tracing data is generated locally and stored in `traces.db`, which is excluded from Git because it is a runtime artifact.
+
+Run the homework:
+```bash
+uv run python homework_05.py
+```
